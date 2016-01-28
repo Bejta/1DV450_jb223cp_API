@@ -1,6 +1,6 @@
 Vagrant.configure(2) do |config|
 
-  config.vm.box = "hashicorp/precise64"
+  config.vm.box = "hashicorp/precise32"
 
   # If your system dont support 64
   #config.vm.box = "hashicorp/precise32"
