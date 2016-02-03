@@ -1,4 +1,26 @@
 Rails.application.routes.draw do
+  
+  #root of the site, session controller with action method index
+  root 'sessions#index'
+  
+  #resources users
+  get 'users' => 'users#index', as: :users
+  post 'users' => 'users#create'
+  get 'new' => 'users#new', as: :new_user
+  
+  #resources clients
+  get 'clients' => 'clients#new', as: :new_client
+  post 'clients' => 'clients#create'
+  get 'delete_client' => 'clients#delete', as: :delete_client
+  
+  #resources apikeys
+  get 'apikeys' => 'apikeys#show', as: :apikey
+  
+  #resources login and logout
+  post 'login' => 'sessions#login', as: :login
+  get 'logout' => 'sessions#logout', as: :logout
+  
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
