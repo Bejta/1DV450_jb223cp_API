@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   #root of the site, session controller with action method index
   root 'sessions#index'
   
+  get 'users' => 'users#new', as: :new_user 
+  
   resources :users
   resources :clients
   resources :admins

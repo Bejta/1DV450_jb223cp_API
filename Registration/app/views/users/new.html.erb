@@ -1,0 +1,30 @@
+<div>
+    <% if @user.errors.any? %>
+        <div>
+          <h2>You have to fulfill following tasks:</h2>
+    
+          <ul>
+            <% @user.errors.full_messages.each do |msg|%>
+              <li><%= msg%></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+#Form for registration of new user
+    <div>
+        <h3>Sign Up</h3>
+        <fieldset>
+            <%= form_for @user do |f| %>
+                <%= f.label :username %>
+                <%= f.text_field :username %>
+                <%= f.label :password %>
+                <%= f.password_field :password %>
+                <%= f.label :password_confirmation %>
+                <%= f.password_field :password_confirmation %>
+                <%= f.submit 'Submit', :id => "submit" %>
+            <% end %>
+        </fieldset>
+        <%= link_to 'Back to Login', root_path %>
+    </div>
+</div>
