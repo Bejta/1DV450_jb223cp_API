@@ -6,12 +6,21 @@ Rails.application.routes.draw do
   # Delete client 
   delete 'delete_client/:id' => 'clients#delete', as: :delete_client
   
+  # Delete client 
+  delete 'delete_client/:id' => 'admins#delete', as: :admin_delete_client
+  
+  
+  #Delete user
+  delete 'destroy_user/:id' => 'admins#destroy', as: :destroy_user
+  
   #login and logout
   post 'login' => 'sessions#login', as: :login
   get 'logout' => 'sessions#logout', as: :logout
   
   get 'users' => 'users#new', as: :new_user 
   get 'clients' => 'clients#show', as: :client
+  
+  get 'admins' => 'admins#show', as: :admin
   
   resources :users
   resources :clients

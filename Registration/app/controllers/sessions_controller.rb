@@ -5,7 +5,11 @@ class SessionsController < ApplicationController
         u = User.find_by_username(params[:username])
         if u && u.authenticate(params[:password])
             session[:userid] = u.id
-            redirect_to client_path
+            if u.admin
+                redirect_to admin_path
+            else
+                redirect_to client_path
+            end    
         else
             flash[:danger] = 'Invalid Username or Password'
             redirect_to root_path

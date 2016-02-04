@@ -1,4 +1,4 @@
-<h1>Your key</h1>
+<h1>Your applications</h1>
 
 <div><%= link_to 'Logout', logout_path %></div>
 
@@ -13,6 +13,6 @@
                     <p>Url: <%= c.url %></p>
                     <p>Description: <%= c.description %></p>
                 </li>
-                <%= link_to 'Delete Application',  { action: :delete, id: c.id }, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to 'Delete Application',  { action: :delete, id: c.id }, method: :delete, data: { confirm: 'If you press YES you will delete the application!' } %>
             <% end %>
         </ul>

@@ -2,33 +2,38 @@
 
 <% @user.each do | u | %>
 
-    # User with id=1 is administrator
-    <% if u.id != 1%>
-    <h3><%= users.username %></h3>
-    <%= link_to 'Delete User',  { action: :delete, id: u.id }, method: :delete, data: { confirm: 'If you press YES you will delete user!' } %>
+    <% if u.username != 'admin'%>
+    <h3><%= u.username %></h3>
+    <%= link_to 'Delete User',  { action: :destroy, id: u.id }, method: :destroy, data: { confirm: 'If you press YES you will delete user!' } %>
     <table>
-        <th>
+         <tr>
             <td>API Key</td>
             <td>URL</td>
             <td>Description</td>
-         </th>
-        <% users.clients.each do | c | %>
-        <tr colspan="3"><%= c.name %></tr>
+            <td>Command</td>
+         </tr>
+        <% u.clients.each do | c | %>
+        <tr>
+            <td colspan="4"><%= c.name %></td>
+        </tr>
         <tr>
             <td>
-                <p>API Key: <%= c.apikey %></p>
+                <p><%= c.apikey %></p>
             </td>
             <td>
-                <p>Url: <%= c.url %></p>
+                <p><%= c.url %></p>
             </td>
             <td>
-                <p>Description: <%= c.description %></p>
+                <p><%= c.description %></p>
             </td>
-        </tr>
-        <tr colspan="3"><%= link_to 'Delete Application',
+            <td>
+                <p><%= link_to 'Delete Application',
                       { action: :delete, id: c.id },
                                     method: :delete,
-        data: { confirm: 'If you press YES you will delete the application!' } %></tr>
+        data: { confirm: 'If you press YES you will delete the application!' } %></p>
+            </td>
+        </tr>
+        <% end %>
     </table>
     <% end %>
 <% end %>

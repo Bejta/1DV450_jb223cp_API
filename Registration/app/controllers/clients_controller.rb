@@ -39,7 +39,7 @@ class ClientsController < ApplicationController
         redirect_to client_path
     end
     
-    ### NEVER GET IT TO WORK ###
+    ### NEVER GOT IT TO WORK ###
     # about creating api key: https://bubblogging.wordpress.com/2014/01/10/ror-authentication-token/
     #def generate_apikey
     #  begin
