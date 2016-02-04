@@ -1,10 +1,10 @@
     <%= link_to "Go back", client_path %>
         
-    <% if @apikey.errors.any? %>
+    <% if @client.errors.any? %>
         <div>
           <h2>It was not possible to complete the registration</h2>
           <ul>
-            <% @apikey.errors.full_messages.each do |msg|%>
+            <% @client.errors.full_messages.each do |msg|%>
                 <li><%= msg%></li>
             <% end %>
           </ul>
@@ -12,8 +12,10 @@
     <% end %>
         <fieldset>
             <%= form_for @client do |c| %>
+                <p><%= c.label :name %></p>
+                <p><%= c.text_field :name %></p>
                 <p><%= c.label :description %></p>
-                <p><%= c.text_field :description %></p>
+                <p><%= c.text_area :description %></p>
                 <p><%= c.label :url %></p>
                 <p><%= c.text_field :url %></p>
                 <p><%= c.submit 'Submit', :id => "submit" %></p>

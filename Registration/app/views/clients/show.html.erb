@@ -1,3 +1,17 @@
 <h1>Your key</h1>
 
 <div><%= link_to 'Logout', logout_path %></div>
+
+<p><%= link_to 'Add new application', new_client_path %></p>
+
+
+        <ul>
+            <% @user.clients.each do |c| %>
+                <li>
+                    <h2><%= c.name %></h2>
+                    <p>API Key: <%= c.apikey %></p>
+                    <p>Url: <%= c.url %></p>
+                    <p>Beskrivning: <%= c.description %></p>
+                </li>
+            <% end %>
+        </ul>

@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
+  private
+  helper_method :current_user
+  
   # || does not change variable if it is already sett
   def current_user
     @current_user ||= User.find(session[:userid]) if session[:userid]
