@@ -4,7 +4,9 @@
 
     <% if u.username != 'admin'%>
     <h3><%= u.username %></h3>
-    <%= link_to 'Delete User',  { action: :destroy, id: u.id }, method: :destroy, data: { confirm: 'If you press YES you will delete user!' } %>
+    <%= link_to 'Delete User',  { action: :destroy, id: u.id },
+                                  method: :destroy, 
+                                    data: { confirm: 'If you press YES you will delete the user!' } %>
     <table>
          <tr>
             <td>API Key</td>
@@ -29,8 +31,8 @@
             <td>
                 <p><%= link_to 'Delete Application',
                       { action: :delete, id: c.id },
-                                    method: :delete,
-        data: { confirm: 'If you press YES you will delete the application!' } %></p>
+                        method: :delete,
+                          data: { confirm: 'If you press YES you will delete the application!' } %></p>
             </td>
         </tr>
         <% end %>

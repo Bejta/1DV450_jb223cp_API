@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   
   
   #Delete user
-  delete 'destroy_user/:id' => 'admins#destroy', as: :destroy_user
+  post 'destroy_user/:id' => 'admins#destroy', as: :destroy_user
   
   #login and logout
   post 'login' => 'sessions#login', as: :login
