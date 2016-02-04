@@ -14,8 +14,7 @@ class SessionsController < ApplicationController
     
     #action method logout
     def logout
-
-        logout
+        session[:userid] = nil
         flash[:success] = "Logged out!"
         redirect_to root_path
     end

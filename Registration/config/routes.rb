@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   #root of the site, session controller with action method index
   root 'sessions#index'
   
+  #login and logout
+  post 'login' => 'sessions#login', as: :login
+  get 'logout' => 'sessions#logout', as: :logout
+  
   get 'users' => 'users#new', as: :new_user 
   get 'clients' => 'clients#show', as: :client
   
@@ -12,9 +16,7 @@ Rails.application.routes.draw do
   
   get 'apikeys' => 'apikeys#show', as: :apikey
   
-  #login and logout
-  post 'login' => 'sessions#login', as: :login
-  get 'logout' => 'sessions#logout', as: :logout
+  
   
   #resources admin
   

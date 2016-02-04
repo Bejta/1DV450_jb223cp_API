@@ -1,11 +1,11 @@
 class ClientsController < ApplicationController
     
+    #Check if user is logged in
+    before_action :require_login
+    
     def new
         @client = Client.new
     end
-    
-    
-    
     
     
     def show
