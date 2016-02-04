@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20160202223824) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "apikey",                  null: false
+    t.string   "name",                    null: false
     t.string   "description", limit: 500, null: false
     t.string   "url"
     t.integer  "user_id"
