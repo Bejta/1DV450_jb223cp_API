@@ -11,19 +11,22 @@
         </div>
     <% end %>
 
-#Form for registration of new user
+
     <div>
         <h3>Sign Up</h3>
         <fieldset>
             <%= form_for @user do |f| %>
-                <%= f.label :username %>
-                <%= f.text_field :username %>
-                <%= f.label :password %>
-                <%= f.password_field :password %>
-                <%= f.label :password_confirmation %>
-                <%= f.password_field :password_confirmation %>
-                <%= f.submit 'Submit', :id => "submit" %>
+                <p><%= f.label :username %></p>
+                <p><%= f.text_field :username %></p>
+                <p><%= f.label :email %></p>
+                <p><%= f.text_field :email %></p>
+                <p><%= f.label :password %></p>
+                <p><%= f.password_field :password %></p>
+                <p><%= f.label :password_confirmation %></p>
+                <p><%= f.password_field :password_confirmation %></p>
+                <p><%= f.submit 'Submit', :id => "submit" %></p>
             <% end %>
+
         </fieldset>
         <%= link_to 'Back to Login', root_path %>
     </div>

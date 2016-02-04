@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'sessions#index'
   
   get 'users' => 'users#new', as: :new_user 
+  get 'clients' => 'clients#show', as: :client
   
   resources :users
   resources :clients

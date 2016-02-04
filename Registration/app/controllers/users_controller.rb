@@ -10,7 +10,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      log_in @user
+      session[:userid] = @user.id 
+      flash[:success] = 'Successfully registered'
+      redirect_to client_path
     else
       render :action => 'new'
     end
