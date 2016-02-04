@@ -11,6 +11,14 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:userid]) if session[:userid]
   end
   
+  #Check if user has admin permissions
+  private
+  def is_admin
+    if current_user.admin = false
+      redirect_to client_path
+    end
+  end
+  
   private
   def require_login
     if current_user.nil? then

@@ -12,6 +12,7 @@
             <td>API Key</td>
             <td>URL</td>
             <td>Description</td>
+            <td>State</td>
             <td>Command</td>
          </tr>
         <% u.clients.each do | c | %>
@@ -26,7 +27,6 @@
                 <p><%= c.url %></p>
             </td>
             <td>
-                
                 <p><%= c.description %></p>
             </td>
             <td>
@@ -37,7 +37,7 @@
                 <% end %>
             </td>
             <td>
-                <p><%= link_to 'Activate/Deactivate Application',
+                <p><%= link_to 'Activate/Deactivate',
                       { action: :revoke, id: c.id },
                         method: :revoke,
                           data: { confirm: 'Press YES to change application state' } %></p>
