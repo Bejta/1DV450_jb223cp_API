@@ -13,6 +13,20 @@ class AdminsController < ApplicationController
         redirect_to admin_path
     end
     
+    #Activate/deactivate application
+    def revoke
+        @client = Client.find(params[:id])
+        if @client.active
+            @client.active = false
+            flash[:success] = 'Application deactivated'
+        else
+            @client.active = true
+            flash[:success] = 'Application activated'
+        end    
+        @client.save
+        redirect_to admin_path
+    end
+    
     #Delete application
     def delete
         @client = Client.find(params[:id])

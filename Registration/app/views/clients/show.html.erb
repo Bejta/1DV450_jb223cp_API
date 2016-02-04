@@ -10,6 +10,11 @@
                 <li>
                     <h2><%= c.name %></h2>
                     <p>API Key: <%= c.apikey %></p>
+                    <% if c.active %>
+                        <p>State: Active</p>
+                    <% else %>
+                        <p>State: Administrator deactivated your application</p>
+                    <% end %>
                     <p>Url: <%= c.url %></p>
                     <p>Description: <%= c.description %></p>
                 </li>

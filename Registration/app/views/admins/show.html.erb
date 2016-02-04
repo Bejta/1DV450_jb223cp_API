@@ -26,13 +26,21 @@
                 <p><%= c.url %></p>
             </td>
             <td>
+                
                 <p><%= c.description %></p>
             </td>
             <td>
-                <p><%= link_to 'Delete Application',
-                      { action: :delete, id: c.id },
-                        method: :delete,
-                          data: { confirm: 'If you press YES you will delete the application!' } %></p>
+                <% if c.active %>
+                <p>ACTIVE</p>
+                <% else %>
+                <p>INACTIVE</p>
+                <% end %>
+            </td>
+            <td>
+                <p><%= link_to 'Activate/Deactivate Application',
+                      { action: :revoke, id: c.id },
+                        method: :revoke,
+                          data: { confirm: 'Press YES to change application state' } %></p>
             </td>
         </tr>
         <% end %>

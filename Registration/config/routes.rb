@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   # Delete client 
   delete 'delete_client/:id' => 'admins#delete', as: :admin_delete_client
   
+  #Revoke client
+  post 'revoke_client/:id' => 'admins#revoke', as: :revoke_client
   
   #Delete user
   post 'destroy_user/:id' => 'admins#destroy', as: :destroy_user
