@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   #root of the site, session controller with action method index
   root 'sessions#index'
   
+  # Delete client 
+  delete 'delete_client/:id' => 'clients#delete', as: :delete_client
+  
   #login and logout
   post 'login' => 'sessions#login', as: :login
   get 'logout' => 'sessions#logout', as: :logout

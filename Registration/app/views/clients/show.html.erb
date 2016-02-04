@@ -13,5 +13,6 @@
                     <p>Url: <%= c.url %></p>
                     <p>Beskrivning: <%= c.description %></p>
                 </li>
+                <%= link_to 'Delete Application',  { action: :delete, id: c.id }, method: :delete, data: { confirm: 'Are you sure?' } %>
             <% end %>
         </ul>
