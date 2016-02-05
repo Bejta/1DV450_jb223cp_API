@@ -3,7 +3,7 @@
 ### Instruktioner
 
 - ``` git clone https://github.com/jb223cp/1DV450_jb223cp.git ```
-- Från map i vilken befiner sig applikation kör : ``` cd Registration ``` 
+- Från mapp i vilken befinner sig applikation kör : ``` cd Registration ``` 
 - ``` bundle install ```
 - ``` rake db:migrate```
 - ``` rake db:seed```  Skapar en användare med admin rättigheter, och en användare med vanliga rättigheter
