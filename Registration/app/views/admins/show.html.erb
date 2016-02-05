@@ -1,3 +1,4 @@
+<div>
 <div><%= link_to 'Logout', logout_path %></div>
 
 <% @user.each do | u | %>
@@ -7,19 +8,21 @@
     <%= link_to 'Delete User',  { action: :destroy, id: u.id },
                                   method: :destroy, 
                                     data: { confirm: 'If you press YES you will delete the user!' } %>
-    <table>
-         <tr>
+    <table class="table">
+         <thead>
+            <td>Name</td>
             <td>API Key</td>
             <td>URL</td>
             <td>Description</td>
             <td>State</td>
             <td>Command</td>
-         </tr>
+         </thead>
+         <tbody>
         <% u.clients.each do | c | %>
-        <tr>
-            <td colspan="4"><%= c.name %></td>
-        </tr>
-        <tr>
+        <tr class="active">
+            <td>
+                <p><%= c.name %></p>
+            </td>
             <td>
                 <p><%= c.apikey %></p>
             </td>
@@ -29,12 +32,15 @@
             <td>
                 <p><%= c.description %></p>
             </td>
-            <td>
-                <% if c.active %>
+            <% if c.active %>
+            <td class="success">
                 <p>ACTIVE</p>
+            </td>
                 <% else %>
+            <td class="warning">
                 <p>INACTIVE</p>
-                <% end %>
+            </td>
+            <% end %>
             </td>
             <td>
                 <p><%= link_to 'Activate/Deactivate',
@@ -44,6 +50,8 @@
             </td>
         </tr>
         <% end %>
+        </tbody>
     </table>
     <% end %>
 <% end %>
+</div>

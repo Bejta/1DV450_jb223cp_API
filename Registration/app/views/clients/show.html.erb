@@ -5,19 +5,19 @@
 <p><%= link_to 'Add new application', new_client_path %></p>
 
 
-        <ul>
+        <ul class="list-group">
             <% @user.clients.each do |c| %>
-                <li>
-                    <h2><%= c.name %></h2>
-                    <p>API Key: <%= c.apikey %></p>
+                <li class="list-group-item">
+                    <h3 class="list-group-item-heading"><%= c.name %></h3>
+                    <p class="list-group-item-text">API Key: <%= c.apikey %></p>
                     <% if c.active %>
-                        <p>State: Active</p>
+                        <p class="list-group-item-text">State: Active</p>
                     <% else %>
-                        <p>State: Administrator deactivated your application</p>
+                        <p class="list-group-item-text">State: Administrator deactivated your application</p>
                     <% end %>
-                    <p>Url: <%= c.url %></p>
-                    <p>Description: <%= c.description %></p>
+                    <p class="list-group-item-text">Url: <%= c.url %></p>
+                    <p class="list-group-item-text">Description: <%= c.description %></p>
+                    <%= link_to 'Delete Application',  { action: :delete, id: c.id }, method: :delete, data: { confirm: 'If you press YES you will delete the application!' } %>
                 </li>
-                <%= link_to 'Delete Application',  { action: :delete, id: c.id }, method: :delete, data: { confirm: 'If you press YES you will delete the application!' } %>
             <% end %>
         </ul>

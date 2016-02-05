@@ -10,7 +10,7 @@
           </ul>
         </div>
     <% end %>
-        <fieldset>
+        <fieldset class="scheduler-border">
             <%= form_for @client do |c| %>
                 <p><%= c.label :name %></p>
                 <p><%= c.text_field :name %></p>
@@ -18,6 +18,6 @@
                 <p><%= c.text_area :description %></p>
                 <p><%= c.label :url %></p>
                 <p><%= c.text_field :url %></p>
-                <p><%= c.submit 'Submit', :id => "submit" %></p>
+                <p><%= c.submit 'Submit', :id => "submit", :class =>'btn btn-default' %></p>
             <% end %>
         </fieldset>

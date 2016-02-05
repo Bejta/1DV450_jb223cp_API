@@ -14,7 +14,7 @@
 
     <div>
         <h3>Sign Up</h3>
-        <fieldset>
+        <fieldset class="scheduler-border">
             <%= form_for @user do |f| %>
                 <p><%= f.label :username %></p>
                 <p><%= f.text_field :username %></p>
@@ -24,9 +24,8 @@
                 <p><%= f.password_field :password %></p>
                 <p><%= f.label :password_confirmation %></p>
                 <p><%= f.password_field :password_confirmation %></p>
-                <p><%= f.submit 'Submit', :id => "submit" %></p>
+                <p><%= f.submit 'Submit', :id => "submit" , :class =>'btn btn-default' %></p>
             <% end %>
-
         </fieldset>
         <%= link_to 'Back to Login', root_path %>
     </div>

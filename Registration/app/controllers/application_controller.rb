@@ -14,7 +14,8 @@ class ApplicationController < ActionController::Base
   #Check if user has admin permissions
   private
   def is_admin
-    if current_user.admin = false
+    if !current_user.admin
+      flash[:warning] = 'You do not have administrator permissions'
       redirect_to client_path
     end
   end
@@ -22,7 +23,7 @@ class ApplicationController < ActionController::Base
   private
   def require_login
     if current_user.nil? then
-      flash[:danger] = ''
+      flash[:warning] = 'You have to login first'
       redirect_to root_path
     end
   end
