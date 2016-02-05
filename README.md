@@ -1,28 +1,20 @@
-# ruby-on-rails-vagrant
+# Registreringsapplikation
 
-A vagrant file for the course 1dv450, Linnaeus University, Sweden, Kalmar
-The installation will take 10-15 minutes the first time.
+### Instruktioner
 
-Add the vagrantfile and the provision.sh to your own repo and run "vagrant up"
+- ``` git clone https://github.com/jb223cp/1DV450_jb223cp.git ```
+- ``` cd Registration ``` 
+- ``` bundle install ```
+- ``` rake db:migrate```
+- ``` rake db:seed```  Skapar en användare med admin rättigheter, och en användare med vanliga rättigheter
+- ``` rails s -b $IP -p $PORT ``` i Cloud9 IDE eller ``` rails s  -b 0.0.0.0 ``` om applikationen ska köras lokalt
 
-## The Vagrantfile
-The vagrantfile installs:
-- Ubuntu ("hashicorp/precise64") if your system dosn´t support 64 change the vagrantfile to "hashicorp/precise32"
+##### Administrator rättigheter:
+USERNAME: admin
+PASSWORD: test
 
-- rvm (latest)
-- ruby (latest)
-- Rails (latest)
-- SQLLite
-- postgreeSQL
-- node.js
+##### Användare rättigheter:
+USERNAME: calle
+PASSWORD: test1
 
-## using vagrant
-To install (first time) and start the virtual machine ```vagrant up```
-
-The go to the vagrant folder (this is mirrored to your host OS)
-``` cd /vagrant ```
-
-from here you can make a new rails application.
-
-When you ready run ```vagrant halt``` to halt the virtual machine.
-Dont forget to commit and push your code
+Lycka till!
