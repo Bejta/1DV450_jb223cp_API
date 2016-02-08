@@ -1,57 +1,62 @@
 <div>
-<div><%= link_to 'Logout', logout_path %></div>
+   <div><%= link_to 'Logout', logout_path %></div>
 
-<% @user.each do | u | %>
+    <% @user.each do | u | %>
 
-    <% if u.username != 'admin'%>
-    <h3><%= u.username %></h3>
-    <%= link_to 'Delete User',  { action: :destroy, id: u.id },
-                                  method: :destroy, 
-                                    data: { confirm: 'If you press YES you will delete the user!' } %>
-    <table class="table">
-         <thead>
-            <td>Name</td>
-            <td>API Key</td>
-            <td>URL</td>
-            <td>Description</td>
-            <td>State</td>
-            <td>Command</td>
-         </thead>
-         <tbody>
-        <% u.clients.each do | c | %>
-        <tr class="active">
-            <td>
-                <p><%= c.name %></p>
-            </td>
-            <td>
-                <p><%= c.apikey %></p>
-            </td>
-            <td>
-                <p><%= c.url %></p>
-            </td>
-            <td>
-                <p><%= c.description %></p>
-            </td>
-            <% if c.active %>
-            <td class="success">
-                <p>ACTIVE</p>
-            </td>
-                <% else %>
-            <td class="warning">
-                <p>INACTIVE</p>
-            </td>
-            <% end %>
-            </td>
-            <td>
-                <p><%= link_to 'Activate/Deactivate',
-                      { action: :revoke, id: c.id },
-                        method: :revoke,
-                          data: { confirm: 'Press YES to change application state' } %></p>
-            </td>
-        </tr>
+        
+        <% if session[:userid] != u.userid %>
+            <h3><%= u.username %></h3>
+            <%= link_to 'Delete User',  { action: :destroy, id: u.id },
+                                          method: :destroy, 
+                                            data: { confirm: 'If you press YES you will delete the user!' } %>
+            <table class="table">
+        
+                     <thead>
+                            <td>Name</td>
+                            <td>API Key</td>
+                            <td>URL</td>
+                            <td>Description</td>
+                            <td>State</td>
+                            <td>Command</td>
+                     </thead>
+         
+                     <tbody>
+                        <% u.clients.each do | c | %>
+                            <tr class="active">
+                                <td>
+                                    <p><%= c.name %></p>
+                                </td>
+                                <td>
+                                    <p><%= c.apikey %></p>
+                                </td>
+                                <td>
+                                    <p><%= c.url %></p>
+                                </td>
+                                <td>
+                                    <p><%= c.description %></p>
+                                </td>
+                                
+                                <% if c.active %>
+                                    <td class="success">
+                                        <p>ACTIVE</p>
+                                    </td>
+                                        <% else %>
+                                    <td class="warning">
+                                        <p>INACTIVE</p>
+                                    </td>
+                                <% end %>
+                                
+                                </td>
+                                <td>
+                                    <p><%= link_to 'Activate/Deactivate',
+                                          { action: :revoke, id: c.id },
+                                            method: :revoke,
+                                              data: { confirm: 'Press YES to change application state' } %></p>
+                                </td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+            </table>
         <% end %>
-        </tbody>
-    </table>
     <% end %>
-<% end %>
-</div>
+ </div>
