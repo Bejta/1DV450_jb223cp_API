@@ -1,4 +1,3 @@
-require 'bcrypt'
 class User < ActiveRecord::Base
     #hash password in a database
     has_secure_password
