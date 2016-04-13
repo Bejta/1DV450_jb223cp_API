@@ -6,5 +6,5 @@ class Position < ActiveRecord::Base
     
     after_validation :geocode, :if => :address_changed?
     
-    has_many :pubs
+    t.belongs_to :pub, index: true
 end

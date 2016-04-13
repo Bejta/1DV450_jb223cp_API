@@ -1,7 +1,6 @@
 class Client < ActiveRecord::Base
     #relation in a database
     belongs_to :user
-    has_many :pubs
     
     #before_create :generate_apikey
     
