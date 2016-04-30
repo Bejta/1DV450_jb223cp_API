@@ -4,7 +4,7 @@
     <% @user.each do | u | %>
 
         
-        <% if session[:userid] != u.userid %>
+        <% if session[:userid] != u.id %>
             <h3><%= u.username %></h3>
             <%= link_to 'Delete User',  { action: :destroy, id: u.id },
                                           method: :destroy, 
