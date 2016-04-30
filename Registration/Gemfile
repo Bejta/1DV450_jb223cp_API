@@ -29,6 +29,11 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'rails_12factor'
 
+<<<<<<< HEAD
+=======
+gem 'geocoder'
+
+>>>>>>> 427625cb2f5614e6e12084e08e4f98900c86e8b2
 # Use Unicorn as the app server
 # gem 'unicorn'
 
