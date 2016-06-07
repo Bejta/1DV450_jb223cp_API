@@ -1,4 +1,16 @@
+
+
 Rails.application.routes.draw do
+  
+  namespace :api , defaults: {format: 'json'} do
+    namespace :v1 do
+      resources :pubs do
+        resources :positions, only: [:index]
+        resources :tags, only: [:index]
+      end
+    end
+  end
+  
   
   #root of the site, session controller with action method index
   root 'sessions#index'

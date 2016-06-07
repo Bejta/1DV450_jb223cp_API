@@ -4,7 +4,10 @@ class Position < ActiveRecord::Base
     geocoded_by :address
     validates :address, presence: true, uniqueness: true
     
+    reverse_geocoded_by :latitude, :longitude
+    before_validation :geocode, :reverse_geocode
+    
     after_validation :geocode, :if => :address_changed?
     
-    t.belongs_to :pub, index: true
+    belongs_to :pub
 end
