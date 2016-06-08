@@ -15,9 +15,16 @@ module Api
        
        #creator by id
        def show
-           respond_with Creator.find(params[:id])
+        
+       creator=Creator.find(params[:id])
+         
+         #Checks if there are creator with that id
+         if creator.nil?
+              render json: { errors: "No creator with id #{params[:id]} found.... "}, status: :not_found
+          else
+              respond_width json: creator, status: :ok
+         end
        end
-     
     end
  end
 end

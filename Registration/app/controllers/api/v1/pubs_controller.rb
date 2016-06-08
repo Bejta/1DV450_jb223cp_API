@@ -60,6 +60,24 @@ module Api
              end
        end
        
+       
+       #Update pub
+       def update
+        
+        if pub = Pub.find_by_id(params[:id])
+        
+        
+        
+        else
+            render json: { errors: "Pub with id #{params[:id]} not found! " }, status: :not_found
+        end
+       end
+       
+       #Create pub
+       def create
+       
+       end
+       
        #Shows one pub, with id from parameter
        def show
          pub = Pub.find(params[:id])
