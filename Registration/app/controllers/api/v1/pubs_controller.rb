@@ -60,6 +60,7 @@ module Api
              end
        end
        
+       #Shows one pub, with id from parameter
        def show
          pub = Pub.find(params[:id])
          if pub.present?
@@ -69,6 +70,21 @@ module Api
          end
        end
        
+       #Delete one pub (must be a member)
+       def destroy
+         if pub = Pub.find_by_id(params[:id])
+             pub.destroy
+             render json: { action: "destroy", message: "Pub removed...", status: :ok}
+         else
+             render json: { errors: "pub with an id #{params[:id]} not found! " }, status: :not_found
+         end
+       end 
+       
+       
+       def pub_params
+         json_params = ActionController::Parameters.new(JSON.parse(request.body.read))
+         json_params.require(:pub).permit(:name, :description, tags: [:name], positions: [:address])
+       end
    end
  end
 end 
