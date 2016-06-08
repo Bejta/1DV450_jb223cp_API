@@ -64,18 +64,50 @@ module Api
        #Update pub
        def update
         
+        #If user is not the same user that use application, then unauthorized is returned
+        render json: { error: "You are not creator of this pub, and can not update it..." }, status: :unauthorized and return unless pub.creator_id = current_user.id
+        
         if pub = Pub.find_by_id(params[:id])
-        
-        
-        
-        else
+         begin
+           if pub.update(pub_params)
+             render json: { action: "update", pub: PubSerializer.new(pub) }, status: :ok
+           else
+             render json: { errors: pub.errors.messages }, status: :bad_request
+           end
+         rescue JSON::ParserError => e
+           render json: { error: "Could not parse JSON ..."}, status: :bad_request
+         end
+         else
             render json: { errors: "Pub with id #{params[:id]} not found! " }, status: :not_found
         end
        end
        
        #Create pub
        def create
-       
+        begin
+           return unless pub_params[:position].present?
+              pub = Pub.new(pub_params.except(:tags, :positions))
+              pub.creator_id = current_user.id
+              
+              if tags = pub_params[:tags]
+              tags.each do |tag|
+                pub.tags << Tag.where(tag).first_or_create
+                end
+              end
+              
+              if pub.save
+                 
+                 pub.position=Position.create(address: pos['address'], pub_id: pub.id)
+                 pub.creator.save
+                 pub.position.save
+                 
+                 respond_with :api, pub, status: :created
+              else
+                 render json: { errors: "Could not save a pub..." }, status: :bad_request
+              end
+        rescue JSON::ParserError => e
+           render json: { error: "Could not parse JSON..."}, status: :bad_request
+        end
        end
        
        #Shows one pub, with id from parameter
@@ -101,7 +133,7 @@ module Api
        
        def pub_params
          json_params = ActionController::Parameters.new(JSON.parse(request.body.read))
-         json_params.require(:pub).permit(:name, :description, tags: [:name], positions: [:address])
+         json_params.require(:pub).permit(:name, :description, :rating, tags: [:name], position: [:address])
        end
    end
  end
