@@ -1,13 +1,13 @@
 class Position < ActiveRecord::Base
     
-    # Example from http://www.rubygeocoder.com/
-    geocoded_by :address
-    validates :address, presence: true, uniqueness: true
+      # Example from http://www.rubygeocoder.com/
     
-    reverse_geocoded_by :latitude, :longitude
-    before_validation :geocode, :reverse_geocode
-    
-    after_validation :geocode, :if => :address_changed?
-    
-    belongs_to :pub
+      has_many :pubs
+
+
+      validates :address, presence: true
+      
+      geocoded_by :address
+      after_validation :geocode, :if => :address_changed?
+
 end

@@ -4,10 +4,25 @@ Rails.application.routes.draw do
   
   namespace :api , defaults: {format: 'json'} do
     namespace :v1 do
+      
+      #Resource model Pub
       resources :pubs do
         resources :positions, only: [:index]
         resources :tags, only: [:index]
       end
+      
+      #Resource model Position
+      resources :positions, only: [:show, :index, :create, :new, :destroy, :update]
+            resources :tags, only: [:show, :index, :create, :new, :destroy, :update] do
+            resources :toilets, only: [:index]
+      end
+      
+      #Resource model Creator
+      resources :creators, only: [:show, :index] do
+        resources :toilets, only: [:index]
+      end
+
+        get 'creator_by_name' => 'creators#creator_by_name'
     end
   end
   
