@@ -1,6 +1,6 @@
 module Api
  module V1
-   class TagsController < ApplicationController
+   class TagsController < ApibaseController
        respond_to :json
        
        def index 

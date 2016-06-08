@@ -1,6 +1,12 @@
 module Api
  module V1
-   class PubsController < ApplicationController
+   class PubsController < ApibaseController
+    
+       #Authentication is not needed for index and show methods
+       skip_before_action :authenticate, only: [:index, :show]
+       #Eventual offset parameters are only applicable on index method
+       before_action :offset_params, only: [:index]
+       
        
        respond_to :json
        
