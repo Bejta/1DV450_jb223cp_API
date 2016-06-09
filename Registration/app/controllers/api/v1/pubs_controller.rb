@@ -50,11 +50,11 @@ module Api
              
              #if there are no parameters set, return all pubs, sort by date created desc   
              else
-               pubs = Pub.all.limit(limit).offset(offset).order("created_at DESC")
+               pubs = Pub.all.limit(@limit).offset(@offset)
              end
              
              if pubs.present?
-                respond_with pubs.limit(limit).offset(limit)
+                respond_with pubs.limit(@limit).offset(@offset)
                else
                  render json: { error: "There is no data for search criteria" }, status: :not_found
              end
@@ -72,7 +72,7 @@ module Api
            if pub.update(pub_params)
              render json: { action: "update", pub: PubSerializer.new(pub) }, status: :ok
            else
-             render json: { errors: pub.errors.messages }, status: :bad_request
+             render json: { errors: "Bad request"}, status: :bad_request
            end
          rescue JSON::ParserError => e
            render json: { error: "Could not parse JSON ..."}, status: :bad_request

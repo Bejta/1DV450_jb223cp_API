@@ -10,7 +10,7 @@ module Api
        respond_to :json
        
        def index 
-           respond_with Creator.offset(offset).limit(limit), status: :ok
+           respond_with Creator.offset(@offset).limit(@limit), status: :ok
        end
        
        #creator by id

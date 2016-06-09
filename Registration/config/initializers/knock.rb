@@ -6,7 +6,7 @@ Knock.setup do |config|
   ## The attribute used to uniquely identify a user.
   ##
   ## Default:
-  # config.handle_attr = :email
+  config.handle_attr = :username
 
   ## Current user retrieval from handle when signing in
   ## --------------------------------------------------
@@ -21,7 +21,7 @@ Knock.setup do |config|
   ## You must raise ActiveRecord::RecordNotFound if the resource cannot be retrieved.
   ##
   ## Default:
-  # config.current_user_from_handle = -> (handle) { User.find_by! Knock.handle_attr => handle }
+  config.current_user_from_handle = -> (handle) { User.find_by! Knock.handle_attr => handle }
 
   ## Current user retrieval when validating token
   ## --------------------------------------------
@@ -33,7 +33,7 @@ Knock.setup do |config|
   ## You must raise ActiveRecord::RecordNotFound if the resource cannot be retrieved.
   ##
   ## Default:
-  # config.current_user_from_token = -> (claims) { User.find claims['sub'] }
+  config.current_user_from_token = -> (claims) { User.find claims['sub'] }
 
 
   ## Expiration claim
@@ -42,7 +42,7 @@ Knock.setup do |config|
   ## How long before a token is expired.
   ##
   ## Default:
-  # config.token_lifetime = 1.day
+  config.token_lifetime = 1.day
 
 
   ## Audience claim
@@ -63,7 +63,7 @@ Knock.setup do |config|
   ## Configure the algorithm used to encode the token
   ##
   ## Default:
-  # config.token_signature_algorithm = 'HS256'
+  config.token_signature_algorithm = 'HS256'
 
   ## Signature key
   ## -------------

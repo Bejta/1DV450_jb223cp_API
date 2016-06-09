@@ -7,13 +7,13 @@ module Api
     protect_from_forgery with: :null_session
     
     before_action :authenticate
-    before_action :restricted_access
+    before_action :key_access
     
     respond_to :json
     
     #response if error
     COULD_NOT_PARSE_JSON = "Could not parse JSON"
-    INVALID_TOKEN = "Invalid token"
+    INVALID_APIKEY = "Invalid API Key"
     
     #offset and limit for bigger amount of data
     OFFSET = 0
@@ -21,22 +21,23 @@ module Api
     
     #check if token is correct and if there are offset and limit params in request
     private
-    def restricted_access
-          token = request.headers['token']
+    def key_access
+          #token = request.headers['token']
           #also checks if token is active
-          app = Client.where(apikey: token).where(active: true).first if token
-          unless app
-            render json: { error: INVALID_TOKEN}, status: :unauthorized
+          
+          @client = Client.where(apikey: params[:akey]).where(active: true).first
+          unless @client
+            render json: { error: INVALID_APIKEY}, status: :unauthorized
           end
     end
     
     def offset_params
         
-      offset = params[:offset] if params[:offset].present?
-      limit = params[:limit] if params[:limit].present?
+      @offset = params[:offset] if params[:offset].present?
+      @limit = params[:limit] if params[:limit].present?
 
-      offset ||= OFFSET
-      limit ||= LIMIT
+      @offset ||= OFFSET
+      @limit ||= LIMIT
     end
    end
  end
