@@ -6,24 +6,20 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-admin = User.create
-admin.username = 'admin'
-admin.email = 'admin@test.se'
-admin.password = 'test'
-admin.password_confirmation = 'test'
-admin.admin = true
-admin.save
 
-u = User.create
-u.username = 'calle'
-u.email = 'calle@test.se'
-u.password = 'test1'
-u.password_confirmation = 'test1'
-u.admin = false
-u.save
+admin = User.create(username: "admin", email:"admin@test.se", password: "test",
+            password_confirmation: "test", admin: true)
+ admin.clients << Client.create(:name => "Goodapp", :url => "www.test.test", :description => "test test test", :active => true, :apikey => "mightytoken")
+           
+testuser = User.create(username: "superuser", email:"calle@test.se", password: "test1",
+            password_confirmation: "test1", admin: true)
+testuser.clients << Client.create(:name => "BadApp", :url => "www.test1.test",  :description => "test1 test1 test1", :active => true, :apikey => "uselesstoken")
+
+testuser1 = User.create(username: "calle", email:"test@test.se", password: "test2",
+            password_confirmation: "test2", admin: false)
+testuser1.clients << Client.create(:name => "mediumApp", :url => "www.medium.test",  :description => "test2 test2 test1", :active => true, :apikey => "newtoken")
 
 
-# People who adds pubs
 c1 = Creator.create(name: 'Jasmin', email: 'jasmin@test.se', password: 'jasmin1', password_confirmation: 'jasmin1')
 c2 = Creator.create(name: 'selma', email: 'selma@test.se', password: 'selma2', password_confirmation: 'selma2')
 
@@ -60,8 +56,6 @@ c2.pubs << pub2
 #pub1.position = p1
 #pub2.position = p2
 #pub3.position = p3
-
-
 
 #Couple pubs to positions
 p1.pubs << pub1

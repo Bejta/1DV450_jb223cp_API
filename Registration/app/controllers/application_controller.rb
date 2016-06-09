@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   private
   helper_method :current_user
   
-  # || does not change variable if it is already sett
+  # || does not change variable if it is already set
   def current_user
     @current_user ||= User.find(session[:userid]) if session[:userid]
   end

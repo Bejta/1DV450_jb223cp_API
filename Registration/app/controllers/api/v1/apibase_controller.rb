@@ -23,7 +23,8 @@ module Api
     private
     def restricted_access
           token = request.headers['token']
-          app = App.where(token: token).first if token
+          #also checks if token is active
+          app = Client.where(apikey: token).where(active: true).first if token
           unless app
             render json: { error: INVALID_TOKEN}, status: :unauthorized
           end

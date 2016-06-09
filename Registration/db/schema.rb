@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160607222457) do
+ActiveRecord::Schema.define(version: 20160413022143) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "apikey",                                 null: false
@@ -42,14 +42,12 @@ ActiveRecord::Schema.define(version: 20160607222457) do
     t.datetime "updated_at", null: false
   end
 
-  #add_index "positions", ["pub_id"], name: "index_positions_on_pub_id"
-
   create_table "pubs", force: :cascade do |t|
     t.string   "name",        null: false
     t.string   "description", null: false
     t.integer  "rating",      null: false
-    t.integer  "creator_id"
     t.integer  "position_id"
+    t.integer  "creator_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

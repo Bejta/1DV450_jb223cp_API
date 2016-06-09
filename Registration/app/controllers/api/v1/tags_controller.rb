@@ -51,7 +51,7 @@ module Api
              pub.tags << tag
              render json: tag, status: 201, location: [:api, tag]
           else
-             render json: { errors: tag.errors }, status: :bad_request
+             render json: { errors: "Bad request" }, status: :bad_request
           end
           rescue JSON::ParserError => e
              render json: { error: "Could not parse JSON" }, status: :bad_request
