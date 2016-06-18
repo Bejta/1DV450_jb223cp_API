@@ -2,7 +2,7 @@ module Api
  module V1
    class PubsController < ApibaseController
     
-       #Authentication is not needed for index and show methods
+       #Authorization is not needed for index and show methods
        skip_before_action :authenticate, only: [:index, :show]
        #Eventual offset parameters are only applicable on index method
        before_action :offset_params, only: [:index]
@@ -38,7 +38,7 @@ module Api
                  
              # checks if latitude and longitude param is set
              elsif params[:latitude] && params[:longitude]
-               location = Position.near([params[:lat], params[:long]], 5)
+               location = Position.near([params[:latitude], params[:longitude]], 5)
                pub = []
                   location.each do |loc|
                      pub.push(Pub.find_by_id(position.pub_id))

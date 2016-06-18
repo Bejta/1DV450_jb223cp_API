@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20160413022143) do
   add_index "clients", ["user_id"], name: "index_clients_on_user_id"
 
   create_table "creators", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",  limit: 20, null: false
     t.string   "password_digest"
     t.string   "email"
     t.datetime "created_at",      null: false

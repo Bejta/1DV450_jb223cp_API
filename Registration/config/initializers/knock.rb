@@ -6,7 +6,7 @@ Knock.setup do |config|
   ## The attribute used to uniquely identify a user.
   ##
   ## Default:
-  config.handle_attr = :username
+  config.handle_attr = :name
 
   ## Current user retrieval from handle when signing in
   ## --------------------------------------------------
@@ -21,7 +21,7 @@ Knock.setup do |config|
   ## You must raise ActiveRecord::RecordNotFound if the resource cannot be retrieved.
   ##
   ## Default:
-  config.current_user_from_handle = -> (handle) { User.find_by! Knock.handle_attr => handle }
+  config.current_user_from_handle = -> (handle) { Creator.find_by! Knock.handle_attr => handle }
 
   ## Current user retrieval when validating token
   ## --------------------------------------------
@@ -33,7 +33,7 @@ Knock.setup do |config|
   ## You must raise ActiveRecord::RecordNotFound if the resource cannot be retrieved.
   ##
   ## Default:
-  config.current_user_from_token = -> (claims) { User.find claims['sub'] }
+  config.current_user_from_token = -> (claims) { Creator.find claims['sub'] }
 
 
   ## Expiration claim
@@ -55,7 +55,7 @@ Knock.setup do |config|
   # config.token_audience = nil
 
   ## If using Auth0, uncomment the line below
-  # config.token_audience = -> { Rails.application.secrets.auth0_client_id }
+  ##config.token_audience = -> { Rails.application.secrets.auth0_client_id }
 
   ## Signature algorithm
   ## -------------------
