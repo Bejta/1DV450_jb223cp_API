@@ -24,18 +24,24 @@ Lycka till!
 
 ### Baslänk till API
 
-``` https://rubyonrails-api-jb223cp.c9users.io/api/v1/ ```
+``` 
+https://rubyonrails-api-jb223cp.c9users.io/api/v1/ 
+```
 
 ### API nyckel
 
 Vid varje anrop måste en gilltig  API nyckel skickas.
 Ett exempel av gilltig apikey:
 
-``` pubs?akey=newtoken ```
+``` 
+pubs?akey=newtoken 
+```
 
 Hela anrop:
 
-``` https://rubyonrails-api-jb223cp.c9users.io/api/v1/pubs?akey=newtoken ```
+``` 
+https://rubyonrails-api-jb223cp.c9users.io/api/v1/pubs?akey=newtoken 
+```
 
 Resultatet går att få ut i JSON format.
 
