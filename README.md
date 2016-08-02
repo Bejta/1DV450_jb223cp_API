@@ -70,7 +70,7 @@ I _body_ av anropet skicka följande inloggningsuppgifter (Uppgifterna finns i s
 - Anropet från Postman
 <img width="924" alt="screen shot 2016-08-02 at 19 47 21" src="https://cloud.githubusercontent.com/assets/8629282/17338998/1ab75e04-58ea-11e6-81c6-206e18684c69.png">
 
-### EXEMPEL PÅ GET ANROP
+### Exempel med GET anrop
 
  GET Alla pubar:
  
@@ -113,6 +113,14 @@ I _body_ av anropet skicka följande inloggningsuppgifter (Uppgifterna finns i s
   ``` 
   https://rubyonrails-api-jb223cp.c9users.io/api/v1/pubs?latitude=13&&longitude=55&akey=newtoken
   ``` 
+  
+  ### Exempel med POST anrop
+  
+  POST create pub med autentisering
+  
+  <img width="919" alt="screen shot 2016-08-02 at 21 00 41" src="https://cloud.githubusercontent.com/assets/8629282/17341751/55a752e2-58f6-11e6-97cc-459b08738962.png">
+  
+  POST create pub med rätt JSON
   
   
 
