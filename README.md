@@ -1,4 +1,4 @@
-# Registreringsapplikation
+# Registreringsapplikation - Laboration 1
 
 ### Instruktioner
 
@@ -20,7 +20,7 @@ PASSWORD: test1
 
 Lycka till!
 
-# API Dokumentation
+# API Dokumentation - Laboration 2
 
 ### Baslänk till API
 
@@ -49,5 +49,23 @@ Resultatet går att få ut i JSON format.
 
 För att använda CRUD funktionalitet behövs gilltig JWT Token.
 JWT Token når du på följande sätt:
+- Skicka ett POST anrop på följande adress:
+
+``` 
+https://rubyonrails-api-jb223cp.c9users.io/knock/auth_token
+```
+
+I _body_ av anropet skicka följande inloggningsuppgifter (Uppgifterna finns i seed.db file):
+
+``` 
+{"auth":{"name": "selma", "password": "selma2"}}
+```
+- Du bör få Status 201 Created vid följande JSON svar:
+``` 
+{
+  "jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0NzAyNDU3OTQsImF1ZCI6ZmFsc2UsInN1YiI6Mn0.9XiJ3paZKRI9k8W4vpH0WInTAmwYhxVWAeibTvRO6c0"
+}
+``` 
+- Detta är token vilken behövs inkludera i sådana anrop som behövs autentisering (förklarad vidare i texten)
 
 
