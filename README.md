@@ -70,4 +70,49 @@ I _body_ av anropet skicka följande inloggningsuppgifter (Uppgifterna finns i s
 - Anropet från Postman
 <img width="924" alt="screen shot 2016-08-02 at 19 47 21" src="https://cloud.githubusercontent.com/assets/8629282/17338998/1ab75e04-58ea-11e6-81c6-206e18684c69.png">
 
+### EXEMPEL PÅ GET ANROP
+
+ GET Alla pubar:
+ 
+ ``` 
+ https://rubyonrails-api-jb223cp.c9users.io/api/v1/pubs?akey=newtoken
+ ``` 
+ 
+ GET Pub med id=1
+ 
+ ``` 
+ https://rubyonrails-api-jb223cp.c9users.io/api/v1/pubs/1?akey=newtoken
+ ``` 
+ 
+ GET OFFSET
+ 
+  ``` 
+  https://rubyonrails-api-jb223cp.c9users.io/api/v1/pubs?offset=2&akey=newtoken
+  ``` 
+  
+ GET LIMIT
+ 
+  ``` 
+  https://rubyonrails-api-jb223cp.c9users.io/api/v1/pubs?limit=2&akey=newtoken
+  ``` 
+  
+  GET LIMIT och OFFSET
+  
+  ``` 
+  https://rubyonrails-api-jb223cp.c9users.io/api/v1/pubs?offset=1&limit=2&akey=newtokenhttps://rubyonrails-api-jb223cp.c9users.io/api/v1/pubs?limit=2&akey=newtoken
+  ``` 
+  
+  GET Pub med creator_id=1
+ 
+  ``` 
+  https://rubyonrails-api-jb223cp.c9users.io/api/v1/pubs?creator_id=1&akey=newtoken
+  ``` 
+  
+  GET pubar med latitude och longitude
+  
+  ``` 
+  https://rubyonrails-api-jb223cp.c9users.io/api/v1/pubs?latitude=13&&longitude=55&akey=newtoken
+  ``` 
+  
+  
 
