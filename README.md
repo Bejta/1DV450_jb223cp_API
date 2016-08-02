@@ -22,16 +22,25 @@ Lycka till!
 
 # API Dokumentation
 
-###### Baslänk till api : 
+##### Baslänk till api : 
+
 ``` https://rubyonrails-api-jb223cp.c9users.io/api/v1/ ```
-###### Vid varje anrop måste en gilltig  API nyckel skickas.
+
+##### API nyckel
+
+Vid varje anrop måste en gilltig  API nyckel skickas.
 Ett exempel av gilltig apikey:
+
 ``` pubs?akey=newtoken ```
+
 Hela anrop:
+
 ``` https://rubyonrails-api-jb223cp.c9users.io/api/v1/pubs?akey=newtoken ```
+
 Resultatet går att få ut i JSON format.
 
-###### Autentisering
+##### Autentisering
+
 För att använda CRUD funktionalitet behövs gilltig JWT Token.
 JWT Token når du på följande sätt:
 
