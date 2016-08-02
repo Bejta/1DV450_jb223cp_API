@@ -67,5 +67,7 @@ I _body_ av anropet skicka följande inloggningsuppgifter (Uppgifterna finns i s
 }
 ``` 
 - Detta är token vilken behövs inkludera i sådana anrop som behövs autentisering (förklarad vidare i texten)
+- Anropet från Postman
+<img width="924" alt="screen shot 2016-08-02 at 19 47 21" src="https://cloud.githubusercontent.com/assets/8629282/17338998/1ab75e04-58ea-11e6-81c6-206e18684c69.png">
 
 
