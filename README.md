@@ -128,10 +128,32 @@ I _body_ av anropet skicka följande inloggningsuppgifter (Uppgifterna finns i s
   
   Radera puben med id = 3
   Det går att testa med något id utan motsvarande pub (t.ex. 55) och observera fel meddelande.
+  Gilltig akey och auth token är obligatoriska.
   
   ``` 
   https://rubyonrails-api-jb223cp.c9users.io/api/v1/pubs/3?akey=newtoken
   ``` 
+  
+###Exempel med PUT anrop
+
+Uppdatera puben med id=2
+Gilltig akey och auth token är obligatoriska.
+
+  ``` 
+  https://rubyonrails-api-jb223cp.c9users.io/api/v1/pubs/3?akey=newtoken
+  ``` 
+  
+Exempel på JSON som skickad i body:
+
+   ``` 
+  {
+    "pub": {
+        "name": "Updated Pub2"
+    }
+  }
+  ``` 
+  
+
   
   
 
