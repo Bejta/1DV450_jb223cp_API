@@ -122,5 +122,16 @@ I _body_ av anropet skicka följande inloggningsuppgifter (Uppgifterna finns i s
   
   POST create pub med rätt JSON
   
+  ### Exempel med DELETE anrop
+   
+  DELETE pub
+  
+  Radera puben med id = 3
+  Det går att testa med något id utan motsvarande pub (t.ex. 55) och observera fel meddelande.
+  
+  ``` 
+  https://rubyonrails-api-jb223cp.c9users.io/api/v1/pubs/3?akey=newtoken
+  ``` 
+  
   
 
