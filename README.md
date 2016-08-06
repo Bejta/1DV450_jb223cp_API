@@ -114,7 +114,7 @@ I _body_ av anropet skicka följande inloggningsuppgifter (Uppgifterna finns i s
   https://rubyonrails-api-jb223cp.c9users.io/api/v1/pubs?latitude=13&&longitude=55&akey=newtoken
   ``` 
   
-  ### Exempel med POST anrop
+  ###Exempel med POST anrop
   
   POST create pub med autentisering
   
@@ -122,7 +122,7 @@ I _body_ av anropet skicka följande inloggningsuppgifter (Uppgifterna finns i s
   
   POST create pub med rätt JSON
   
-  ### Exempel med DELETE anrop
+  ###Exempel med DELETE anrop
    
   DELETE pub
   
