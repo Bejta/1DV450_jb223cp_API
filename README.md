@@ -108,6 +108,11 @@ I _body_ av anropet skicka följande inloggningsuppgifter (Uppgifterna finns i s
   https://rubyonrails-api-jb223cp.c9users.io/api/v1/pubs?creator_id=1&akey=newtoken
   ``` 
   
+  GET Pubs med sök ord, söker efter name och description
+  ``` 
+  https://rubyonrails-api-jb223cp.c9users.io/api/v1/pubs?akey=newtoken&search=Malmö
+  ``` 
+  
   GET pubar med latitude och longitude
   
   ``` 
@@ -140,7 +145,7 @@ Uppdatera puben med id=2
 Gilltig akey och auth token är obligatoriska.
 
   ``` 
-  https://rubyonrails-api-jb223cp.c9users.io/api/v1/pubs/3?akey=newtoken
+  https://rubyonrails-api-jb223cp.c9users.io/api/v1/pubs/2?akey=newtoken
   ``` 
   
 Exempel på JSON som skickad i body:
