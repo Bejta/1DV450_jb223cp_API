@@ -113,12 +113,17 @@ I _body_ av anropet skicka följande inloggningsuppgifter (Uppgifterna finns i s
   https://rubyonrails-api-jb223cp.c9users.io/api/v1/pubs?akey=newtoken&search=Malmö
   ``` 
   
-  GET pubar med latitude och longitude
+  GET pubar med latitude och longitude i närheten av 1 kilometer
   
   ``` 
-  https://rubyonrails-api-jb223cp.c9users.io/api/v1/pubs?latitude=13&&longitude=55&akey=newtoken
+  https://rubyonrails-api-jb223cp.c9users.io/api/v1/pubs?lat=55.5933023&&lon=13.0068906&akey=newtoken
   ``` 
   
+  Get pubar med adress i närheten av 1 kilometer
+  
+   ``` 
+  https://rubyonrails-api-jb223cp.c9users.io/api/v1/pubs?address=malmö&akey=newtoken
+  ``` 
 ###Exempel med POST anrop
   
   POST create pub med autentisering
