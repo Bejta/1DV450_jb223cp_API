@@ -17,7 +17,7 @@ module Api
     
     #offset and limit for bigger amount of data
     OFFSET = 0
-    LIMIT =  8
+    LIMIT =  15
     
     #check if token is correct and if there are offset and limit params in request
     private

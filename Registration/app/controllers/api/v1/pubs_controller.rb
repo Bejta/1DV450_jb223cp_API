@@ -30,18 +30,30 @@ module Api
                  
              # checks if address param is set
              elsif params[:address].present?
-               location = Position.near(params[:address], 5)
+             # Important to pass the unit 
+             # http://stackoverflow.com/questions/11463940/rails-geocoder-and-near
+               location = Position.near(params[:address], 1,  units: :km)
                pubs = []
+               
                   location.each do |loc|
-                     pub.push(Pub.find_by_id(location.pub_id))
+                       if Pub.find_by_position_id(loc.id).present?
+                         pubs.push(Pub.find_by_position_id(loc.id))
+                       end
                   end
                  
              # checks if latitude and longitude param is set
-             elsif params[:latitude] && params[:longitude]
-               location = Position.near([params[:latitude], params[:longitude]], 5)
-               pub = []
-                  location.each do |loc|
-                     pub.push(Pub.find_by_id(position.pub_id))
+             elsif params[:lat] && params[:lon]
+             
+             pubs = []
+             #pubs.push(Pub.find_by_position_id(3))
+             position = Position.near([params[:lat], params[:lon]], 1, units: :km)
+               #puts params[:lat]
+               #pubs = []
+                  
+                  position.each do |pos|
+                     if Pub.find_by_position_id(pos.id).present?
+                       pubs.push(Pub.find_by_position_id(pos.id))
+                     end  
                   end
                   
              #checks if there is search criteria
@@ -54,7 +66,10 @@ module Api
              end
              
              if pubs.present?
-                respond_with pubs.limit(@limit).offset(@offset)
+                 
+                pubs = pubs.drop(@offset)
+                pubs = pubs.take(@limit)
+                respond_with :api, pubs, status: :ok
                else
                  render json: { error: "There is no data for search criteria" }, status: :not_found
              end
@@ -64,13 +79,16 @@ module Api
        #Update pub
        def update
         
+        
+        
+        if pub = Pub.find_by_id(params[:id])
         #If user is not the same user that use application, then unauthorized is returned
         render json: { error: "You are not creator of this pub, and can not update it..." }, status: :unauthorized and return unless pub.creator_id = current_user.id
         
-        if pub = Pub.find_by_id(params[:id])
          begin
            if pub.update(pub_params)
-             render json: { action: "update", pub: PubSerializer.new(pub) }, status: :ok
+             
+             respond_with pub, status: 204
            else
              render json: { errors: "Bad request"}, status: :bad_request
            end
@@ -82,11 +100,12 @@ module Api
         end
        end
        
+       
        #Create pub
        def create
         begin
-           return unless pub_params[:position].present?
-              pub = Pub.new(pub_params.except(:tags, :positions))
+          return unless pub_params[:position].present?
+             pub = Pub.new(pub_params.except(:tags, :position))
               pub.creator_id = current_user.id
               
               if tags = pub_params[:tags]
@@ -96,12 +115,16 @@ module Api
               end
               
               if pub.save
-                 
-                 pub.position=Position.create(address: pos['address'], pub_id: pub.id)
+                  
+                  if Position.find_by(address: pub_params[:position][:address])
+                    pub.position_id = Position.find_by(address: pub_params[:position][:address]).id
+                  else
+                    pub.position_id = Position.create(address: pub_params[:position][:address]).id
+                  end
                  pub.creator.save
                  pub.position.save
                  
-                 respond_with :api, pub, status: :created
+                respond_with pub, status: 201, location: [:api_v1, pub]
               else
                  render json: { errors: "Could not save a pub..." }, status: :bad_request
               end
