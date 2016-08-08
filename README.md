@@ -22,6 +22,10 @@ Lycka till!
 
 # API Dokumentation - Laboration 2
 
+### Postman collection
+
+https://www.getpostman.com/collections/1aad7f457802a7f514a8
+
 ### Baslänk till API
 
 ``` 
