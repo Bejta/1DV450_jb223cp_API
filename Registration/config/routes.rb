@@ -116,4 +116,8 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  
+  controller 'api/v1' do
+  match '*unmatched_route', :to => 'api/v1/api#route_options', via: [:options]
+  end
 end

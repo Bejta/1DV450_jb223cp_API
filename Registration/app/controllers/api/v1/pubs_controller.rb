@@ -25,7 +25,7 @@ module Api
                  
              #checks if name of creator is set as param    
              elsif params[:name]
-                 creator = Creator.find_by_name(params[:name]);
+                 creator = Creator.find_by_name(params[:creator_name]);
                  pubs = creator.pubs unless creator.nil? 
                  
              # checks if address param is set
@@ -67,8 +67,8 @@ module Api
              
              if pubs.present?
                  
-                pubs = pubs.drop(@offset)
-                pubs = pubs.take(@limit)
+                pubs = pubs.drop(Integer(@offset))
+                pubs = pubs.take(Integer(@limit))
                 respond_with :api, pubs, status: :ok
                else
                  render json: { error: "There is no data for search criteria" }, status: :not_found
