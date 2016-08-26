@@ -103,7 +103,7 @@ I _body_ av anropet skicka följande inloggningsuppgifter (Uppgifterna finns i s
   GET LIMIT och OFFSET
   
   ``` 
-  https://rubyonrails-api-jb223cp.c9users.io/api/v1/pubs?offset=1&limit=2&akey=newtokenhttps://rubyonrails-api-jb223cp.c9users.io/api/v1/pubs?limit=2&akey=newtoken
+  https://rubyonrails-api-jb223cp.c9users.io/api/v1/pubs?offset=1&limit=2&akey=newtoken
   ``` 
   
   GET Pub med creator_id=1
